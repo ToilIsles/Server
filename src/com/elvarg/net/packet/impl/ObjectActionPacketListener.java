@@ -137,6 +137,9 @@ public class ObjectActionPacketListener implements PacketListener {
 				case EDGEVILLE_BANK:
 					player.getBank(player.getCurrentBankTab()).open();
 					break;
+				case LUNAR_ISLE_BANK:
+					player.getBank(player.getCurrentBankTab()).open();
+					break;
 				}
 			}
 		}));
@@ -182,5 +185,6 @@ public class ObjectActionPacketListener implements PacketListener {
 	private static final int LUNAR_ALTAR = 14911;
 	private static final int PRAYER_ALTAR = 409;
 	private static final int EDGEVILLE_BANK = 6943;
+	private static final int LUNAR_ISLE_BANK = 16700;
 	private static final int WILDERNESS_DITCH = 23271;
 }
