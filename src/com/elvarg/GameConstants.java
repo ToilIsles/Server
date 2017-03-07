@@ -44,7 +44,7 @@ public class GameConstants {
 	/**
 	 * The default position in game.
 	 */
-	public static final Position DEFAULT_POSITION = new Position(3091, 3503);
+	public static final Position DEFAULT_POSITION = new Position(2099, 3915);
 
 	/**
 	 * Should the inventory be refreshed immediately on switching items or
