@@ -1,5 +1,22 @@
 //After making changes, use the "reloadnpcs" command ingame to quickly test it out.
 
+npc: 3843
+name: Sirsal banker
+spawn-position: 2099:3921
+examine: Glad to be one of only three men on the island.
+finish
+
+npc: 3843
+name: Sirsal banker
+spawn-position: 2098:3921
+examine: Glad to be one of only three men on the island.
+finish
+
+npc: 3843
+name: Sirsal banker
+spawn-position: 2097:3921
+examine: Glad to be one of only three men on the island.
+finish
 
 //The emblem trader, in Edgeville. Skulls players is also a PKP shop.
 npc: 315

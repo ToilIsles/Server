@@ -181,7 +181,9 @@ public class NPCOptionPacketListener implements PacketListener {
 			@Override
 			public void execute() {
 				switch (npc.getId()) {
-
+				case SIRSAL_BANKER:
+					player.getBank(player.getCurrentBankTab()).open();
+					break;
 				case MAGE:
 					Shop.open(player, 2);
 					break;
@@ -378,6 +380,7 @@ public class NPCOptionPacketListener implements PacketListener {
 	private static final int MAGE = 3309;
 	private static final int MAKE_OVER_MAGE = 1306;
 	private static final int SHOP_KEEPER = 506;
+	private static final int SIRSAL_BANKER = 3843;
 	private static final int JEWELRY_TRADER = 526;
 	private static final int SURGEON_GENERAL_TIFANI = 3343;
 	private static final int PKER = 2660;
