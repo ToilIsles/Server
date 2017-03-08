@@ -205,7 +205,7 @@ public final class RegionClipping {
 	}
 
 	public static void addClipping(int x, int y, int height, int shift) {
-		System.out.println("Added clip at "+x+" and "+y+"");
+		//System.out.println("Added clip at "+x+" and "+y+"");
 		RegionClipping.loadRegion(x, y);
 		int regionX = x >> 3;
 		int regionY = y >> 3;

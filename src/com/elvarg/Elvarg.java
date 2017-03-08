@@ -19,6 +19,7 @@ import com.elvarg.net.channel.ChannelPipelineHandler;
 import com.elvarg.util.ShutdownHook;
 import com.elvarg.world.collision.region.RegionClipping;
 import com.elvarg.world.content.clan.ClanChatManager;
+import com.elvarg.world.content.stairs.Stairs;
 import com.elvarg.world.model.dialogue.DialogueManager;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
@@ -93,7 +94,7 @@ public class Elvarg {
 			serviceLoader.execute(() -> ShopDefinition.parseShops().load());
 			serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 			serviceLoader.execute(() -> DialogueManager.parseDialogues().load());
-
+			serviceLoader.execute(() -> Stairs.parseStairs().load());
 			// OTHERS
 			serviceLoader.execute(() -> ClanChatManager.init());
 			serviceLoader.execute(() -> CombatPoisonData.init());

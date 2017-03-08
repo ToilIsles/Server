@@ -9,11 +9,11 @@ import com.elvarg.net.packet.Packet;
 import com.elvarg.net.packet.PacketConstants;
 import com.elvarg.net.packet.PacketListener;
 import com.elvarg.world.collision.region.RegionClipping;
+import com.elvarg.world.content.stairs.Stairs;
 import com.elvarg.world.entity.combat.magic.Autocasting;
 import com.elvarg.world.entity.impl.object.GameObject;
 import com.elvarg.world.entity.impl.player.Player;
 import com.elvarg.world.model.Animation;
-import com.elvarg.world.model.Direction;
 import com.elvarg.world.model.ForceMovement;
 import com.elvarg.world.model.MagicSpellbook;
 import com.elvarg.world.model.PlayerRights;
@@ -58,6 +58,10 @@ public class ObjectActionPacketListener implements PacketListener {
 			@Override
 			public void execute() {
 				AreaHandler.firstClickObject(player, id);
+				
+				if(Stairs.containsID(id))
+					Stairs.handleStairs(player, id, position);
+				
 				switch (id) {
 
 				case WILDERNESS_DITCH:
@@ -99,96 +103,6 @@ public class ObjectActionPacketListener implements PacketListener {
 					} else {
 						player.getPacketSender()
 								.sendMessage("You don't need to recharge your Prayer points right now.");
-					}
-					break;
-				case LUNAR_ISLE_STAIRS:
-					if (position.getX() == 2104 && position.getY() == 3905 && player.getPosition().getZ() == 0){
-						player.moveTo(new Position(2107, 3905, 1));
-						player.setDirection(Direction.EAST);
-					}
-					if(position.getX() == 2098 && position.getY() == 3906 && player.getPosition().getZ() == 0){
-						player.moveTo(new Position(2097, 3905, 1));
-						player.setDirection(Direction.EAST);
-					}
-					if(position.getX() == 2089 && position.getY() == 3918 && player.getPosition().getZ() == 0){
-						player.moveTo(new Position(2089, 3921, 1));
-						player.setDirection(Direction.NORTH);
-					}
-					if(position.getX() == 2078 && position.getY() == 3910 && player.getPosition().getZ() == 0){
-						player.moveTo(new Position(2078, 3908, 1));
-						player.setDirection(Direction.SOUTH);
-					}
-					if(position.getX() == 2080 && position.getY() == 3894 && player.getPosition().getZ() == 0){
-						player.moveTo(new Position(2080, 3892, 1));
-						player.setDirection(Direction.SOUTH);
-					}
-					break;
-				case LUNAR_ISLE_STAIRS_DOWN:
-					if(position.getX() == 2105 && position.getY() == 3905 && player.getPosition().getZ() == 1){
-						player.moveTo(new Position(2103, 3905));
-						player.setDirection(Direction.WEST);
-					}
-					if(position.getX() == 2089 && position.getY() == 3919 && player.getPosition().getZ() == 1){
-						player.moveTo(new Position(2089, 3917, 0));
-						player.setDirection(Direction.SOUTH);
-					}
-					if(position.getX() == 2078 && position.getY() == 3909 && player.getPosition().getZ() == 1){
-						player.moveTo(new Position(2078, 3912, 0));
-						player.setDirection(Direction.NORTH);
-					}
-					if(position.getX() == 2080 && position.getY() == 3893 && player.getPosition().getZ() == 1){
-						player.moveTo(new Position(2080, 3896, 0));
-						player.setDirection(Direction.NORTH);
-					}
-					break;
-				case LUNAR_ISLE_STAIRS_DOWN_2:
-					if(position.getX() == 2098 && position.getY() == 3905 && player.getPosition().getZ() == 1){
-						player.moveTo(new Position(2098, 3908));
-						player.setDirection(Direction.NORTH);
-					}
-					break;
-				case LUNAR_ISLE_LADDER:
-					if(position.getX() == 2090 && position.getY() == 3904 && player.getPosition().getZ() == 0){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2089, 3904, 1));
-						player.setDirection(Direction.EAST);
-					}
-					if(position.getX() == 2082 && position.getY() == 3922 && player.getPosition().getZ() == 0){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2083, 3922, 1));
-						player.setDirection(Direction.WEST);
-					}
-					if(position.getX() == 2101 && position.getY() == 3898 && player.getPosition().getZ() == 0){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2100, 3898, 1));
-						player.setDirection(Direction.EAST);
-					}
-					if(position.getX() == 2092 && position.getY() == 3899 && player.getPosition().getZ() == 0){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2091, 3899, 1));
-						player.setDirection(Direction.EAST);
-					}
-					break;
-				case LUNAR_ISLE_LADDER_DOWN:
-					if(position.getX() == 2090 && position.getY() == 3904 && player.getPosition().getZ() == 1){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2090, 3905, 0));
-						player.setDirection(Direction.SOUTH);
-					}
-					if(position.getX() == 2082 && position.getY() == 3922 && player.getPosition().getZ() == 1){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2083, 3922, 0));
-						player.setDirection(Direction.WEST);
-					}
-					if(position.getX() == 2101 && position.getY() == 3898 && player.getPosition().getZ() == 1){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2100, 3898, 0));
-						player.setDirection(Direction.EAST);
-					}
-					if(position.getX() == 2092 && position.getY() == 3899 && player.getPosition().getZ() == 1){
-						player.performAnimation(new Animation(828));
-						player.moveTo(new Position(2091, 3899, 0));
-						player.setDirection(Direction.EAST);
 					}
 					break;
 				}
@@ -276,9 +190,4 @@ public class ObjectActionPacketListener implements PacketListener {
 	private static final int EDGEVILLE_BANK = 6943;
 	private static final int LUNAR_ISLE_BANK = 16700;
 	private static final int WILDERNESS_DITCH = 23271;
-	private static final int LUNAR_ISLE_STAIRS = 16734;
-	private static final int LUNAR_ISLE_STAIRS_DOWN = 16732;
-	private static final int LUNAR_ISLE_STAIRS_DOWN_2 = 16733;
-	private static final int LUNAR_ISLE_LADDER = 16735;
-	private static final int LUNAR_ISLE_LADDER_DOWN = 16736;
 }
