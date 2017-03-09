@@ -6,6 +6,7 @@ import com.elvarg.net.packet.Packet;
 import com.elvarg.net.packet.PacketConstants;
 import com.elvarg.net.packet.PacketListener;
 import com.elvarg.world.World;
+import com.elvarg.world.content.bank.BankerNPC;
 import com.elvarg.world.entity.combat.magic.CombatSpell;
 import com.elvarg.world.entity.combat.magic.CombatSpells;
 import com.elvarg.world.entity.combat.pvp.BountyHunter;
@@ -33,6 +34,8 @@ public class NPCOptionPacketListener implements PacketListener {
 		player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
 			@Override
 			public void execute() {
+				if(BankerNPC.isBanker(npc))
+					BankerNPC.doDialogue(player);
 				switch (npc.getId()) {
 
 				case SHOP_KEEPER:
@@ -180,10 +183,9 @@ public class NPCOptionPacketListener implements PacketListener {
 		player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
 			@Override
 			public void execute() {
+				if(BankerNPC.isBanker(npc))
+					BankerNPC.openBank(player);
 				switch (npc.getId()) {
-				case SIRSAL_BANKER:
-					player.getBank(player.getCurrentBankTab()).open();
-					break;
 				case MAGE:
 					Shop.open(player, 2);
 					break;
@@ -384,4 +386,5 @@ public class NPCOptionPacketListener implements PacketListener {
 	private static final int JEWELRY_TRADER = 526;
 	private static final int SURGEON_GENERAL_TIFANI = 3343;
 	private static final int PKER = 2660;
+	
 }

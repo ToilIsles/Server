@@ -105,5 +105,21 @@
         "line1": "Yes",
         "line2": "Cancel",
         "next": -1
+    },
+    {
+    	"id": 11,
+    	"type": "STATEMENT",
+    	"lines": 1,
+    	"line1": "Good day, how may I help you?",
+    	"next": 12,
+    	"npcId": 3843
+    },
+    {
+    	"id": 12,
+    	"type": "OPTION",
+    	"lines": 2,
+    	"line1": "I'd like to access my bank account, please",
+    	"line2": "Nevermind",
+    	"next": -1
     }
 ]
