@@ -258,5 +258,65 @@
 		},
 		"playerface": 4,
 		"animation": 828
+	},
+	{
+		"id": 16960,
+		"stairpos": {
+			"x": 2118,
+			"y": 3894,
+			"z": 0
+		},
+		"playerpos": {
+			"x": 2118,
+			"y": 3893,
+			"z": 1
+		},
+		"playerface": 1,
+		"animation": 828
+	},
+	{
+		"id": 16962,
+		"stairpos": {
+			"x": 2118,
+			"y": 3894,
+			"z": 1
+		},
+		"playerpos": {
+			"x": 2118,
+			"y": 3895,
+			"z": 0
+		},
+		"playerface": 6,
+		"animation": 828
+	},
+	{
+		"id": 16959,
+		"stairpos": {
+			"x": 2127,
+			"y": 3893,
+			"z": 1
+		},
+		"playerpos": {
+			"x": 2128,
+			"y": 3893,
+			"z": 2
+		},
+		"playerface": 3,
+		"animation": 828
+	},
+	{
+		"id": 16961,
+		"stairpos": {
+			"x": 2127,
+			"y": 3893,
+			"z": 2
+		},
+		"playerpos": {
+			"x": 2126,
+			"y": 3893,
+			"z": 1
+		},
+		"playerface": 4,
+		"animation": 828
 	}
 ]

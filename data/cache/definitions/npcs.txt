@@ -1,5 +1,12 @@
 //After making changes, use the "reloadnpcs" command ingame to quickly test it out.
 
+npc: 6650
+name: Captain Bentley
+spawn-position: 2138:3900:2
+examine: Parrot on shoulder... hook for a hand... yup, definitely a pirate.
+walk-radius: 4
+finish
+
 npc: 3843
 name: Sirsal banker
 spawn-position: 2099:3921
